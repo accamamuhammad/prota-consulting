@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Colors — same tokens as before, now defined as CSS variables.
+     Tailwind v4 auto-generates utility classes from these:
+     bg-bg, text-ink, border-line, bg-indigo, text-indigo-soft, etc. */
+  --color-bg: #F3F2EE;
+  --color-ink: #15151A;
+  --color-ink-soft: #57565C;
+  --color-indigo: #4F46E5;
+  --color-indigo-soft: #ECEAFB;
+  --color-line: #DEDCD3;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Fonts — point at the CSS variables next/font/google generates.
+     This gives you font-serif / font-mono utility classes. */
+  --font-serif: var(--font-source-serif), Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Radius token used as rounded-sharp throughout the components */
+  --radius-sharp: 4px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
 }

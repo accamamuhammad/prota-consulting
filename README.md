@@ -4,29 +4,49 @@
 
 ```
 your-project/
-├── tailwind.config.ts        ← replace/merge with yours
+├── app/
+│   ├── globals.css            ← replace yours with this
+│   ├── layout.tsx              ← edit (see below)
+│   └── page.tsx                  ← replace with the one provided
 ├── lib/
-│   └── fonts.ts               ← new
-├── components/
-│   ├── Hero.tsx                ← new
-│   ├── About.tsx                ← new
-│   ├── Services.tsx              ← new
-│   ├── CaseStudies.tsx            ← new
-│   ├── Booking.tsx                ← new
-│   ├── Pricing.tsx                 ← new
-│   └── Contact.tsx                  ← new
-└── app/
-    ├── layout.tsx              ← edit (see below)
-    └── page.tsx                 ← replace with the one provided
+│   └── fonts.ts                   ← new
+└── components/
+    ├── Hero.tsx                    ← new
+    ├── About.tsx                    ← new
+    ├── Services.tsx                  ← new
+    ├── CaseStudies.tsx                ← new
+    ├── Booking.tsx                     ← new
+    ├── Pricing.tsx                      ← new
+    └── Contact.tsx                       ← new
 ```
 
-If your project uses a `src/` directory, put `components/` and `lib/`
-inside `src/` and update the `content` paths in `tailwind.config.ts`
-accordingly (already set up for `src/`, adjust if you're not using it).
+If your project uses a `src/` directory, put everything inside `src/`
+and make sure `tsconfig.json`'s `@/*` path alias points there.
+
+## Tailwind v4 — no `tailwind.config.ts` needed
+
+Since you're on Tailwind v4, design tokens are no longer defined in a JS/TS
+config file — they live directly in `globals.css` using the `@theme`
+directive. The `globals.css` provided here defines:
+
+- `--color-bg`, `--color-ink`, `--color-ink-soft`, `--color-indigo`,
+  `--color-indigo-soft`, `--color-line` → these auto-generate utilities
+  like `bg-bg`, `text-ink`, `border-line`, `bg-indigo`, etc.
+- `--font-serif`, `--font-mono` → generate `font-serif` / `font-mono`
+- `--radius-sharp` → generates `rounded-sharp`
+
+All the utility class names used across the 7 components (`bg-bg`,
+`text-ink-soft`, `border-line`, `bg-indigo`, `rounded-sharp`, `font-serif`,
+`font-mono`, etc.) stay exactly the same as before — only *where* they're
+defined changed. You shouldn't need to touch any component file for this.
+
+If you had a previous `tailwind.config.ts` from earlier in this project,
+delete it — v4 doesn't use it, and leaving a stale one around can cause
+confusing overrides.
 
 ## 1. Wire up the fonts
 
-In `app/layout.tsx`, import and apply the font variables:
+In `app/layout.tsx`:
 
 ```tsx
 import { sourceSerif, plexMono } from "@/lib/fonts";
@@ -35,46 +55,50 @@ import "./globals.css";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${sourceSerif.variable} ${plexMono.variable}`}>
-      <body className="bg-bg text-ink font-serif">{children}</body>
+      <body className="font-serif">{children}</body>
     </html>
   );
 }
 ```
 
-## 2. Make sure `@/` path alias works
+Note: `next/font`'s generated variables are named `--font-source-serif` and
+`--font-plex-mono` (not `--font-serif`/`--font-mono`) — that's intentional,
+to avoid colliding with the `--font-serif`/`--font-mono` tokens Tailwind's
+`@theme` block defines. `globals.css` already wires one to the other.
+
+## 2. Make sure the `@/` path alias works
 
 Check `tsconfig.json` has:
 
 ```json
 {
   "compilerOptions": {
-    "paths": { "@/*": ["./src/*"] }
+    "paths": { "@/*": ["./*"] }
   }
 }
 ```
 
-(or `["./*"]` if you're not using `src/`)
+(or `["./src/*"]` if you're using a `src/` directory)
 
-## 3. Drop in `tailwind.config.ts`
+## 3. Install Motion
 
-This adds the `bg`, `ink`, `ink-soft`, `indigo`, `indigo-soft`, `line`
-colors and the `font-serif` / `font-mono` families used throughout every
-section. Merge it with your existing config if you've already customized
-anything.
+```bash
+npm install motion
+```
+
+All 7 components already import from `"motion/react"` for scroll-triggered
+reveals and hover micro-interactions.
 
 ## Notes on what's stubbed for now
 
 - **Booking.tsx** — the dark "availability" panel is static mock data.
   When we build the dedicated `/booking` page, we'll swap this for a real
   Calendly embed and the CTA already points to `/booking`.
-- **Pricing.tsx** — tier copy/pricing is placeholder, easy to edit at the
-  top of the file (`TIERS` array).
-- **Contact.tsx** — form currently just flips to a "sent" state on submit.
-  The `handleSubmit` function has a `TODO` where we'll wire it to a
-  Supabase insert or an API route.
-- **CaseStudies.tsx** — placeholder client stories; swap in real ones
-  whenever you have them (`CASE_STUDIES` array at the top).
+- **Pricing.tsx** — tier copy/pricing is placeholder (`TIERS` array).
+- **Contact.tsx** — form flips to a "sent" state on submit. `handleSubmit`
+  has a `TODO` for wiring to Supabase or an API route.
+- **CaseStudies.tsx** — placeholder client stories (`CASE_STUDIES` array).
 
 All sections share the same section-label pattern (small indigo dash +
-mono eyebrow text) and spacing rhythm (`py-24`, `border-t border-line`)
-so new sections you add later will slot in visually without extra work.
+mono eyebrow text) and spacing rhythm (`py-24`, `border-t border-line`),
+so new sections will slot in visually without extra work.
