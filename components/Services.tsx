@@ -31,7 +31,7 @@ const fadeUp = {
 export default function Services() {
   return (
     <section id="services" className="border-t border-line bg-bg py-24">
-      <div className="mx-auto max-w-[1180px] px-8">
+      <div className="mx-auto max-w-295 px-8">
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -40,11 +40,11 @@ export default function Services() {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <div className="mb-5 flex items-center gap-2.5 font-mono text-[12.5px] uppercase text-ink-soft">
-            <span className="inline-block h-[2px] w-[18px] bg-indigo" />
+            <span className="inline-block h-0.5 w-4.5 bg-indigo" />
             What we do
           </div>
-          <h2 className="mb-14 max-w-[640px] font-serif text-[34px] font-medium leading-[1.15] sm:text-[42px]">
-            Stop settling for advice you can't act on.
+          <h2 className="mb-14 max-w-160 font-serif text-[34px] font-medium leading-[1.15] sm:text-[42px]">
+            Stop settling for advice you can&apos;t act on.
           </h2>
         </motion.div>
 

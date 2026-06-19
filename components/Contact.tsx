@@ -24,19 +24,19 @@ export default function Contact() {
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
         transition={{ staggerChildren: 0.12 }}
-        className="mx-auto max-w-[1180px] px-8"
+        className="mx-auto max-w-295 px-8"
       >
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.8fr_1.2fr]">
           <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: "easeOut" }}>
             <div className="mb-5 flex items-center gap-2.5 font-mono text-[12.5px] uppercase text-ink-soft">
-              <span className="inline-block h-[2px] w-[18px] bg-indigo" />
+              <span className="inline-block h-0.5 w-4.5 bg-indigo" />
               Contact
             </div>
             <h2 className="mb-5 font-serif text-[34px] font-medium leading-[1.15] sm:text-[42px]">
               Not ready to book? Just ask.
             </h2>
-            <p className="max-w-[380px] text-[15px] leading-relaxed text-ink-soft">
-              Send a few lines about what you're working on. We reply within
+            <p className="max-w-95 text-[15px] leading-relaxed text-ink-soft">
+              Send a few lines about what you&apos;re working on. We reply within
               one business day.
             </p>
 
@@ -58,13 +58,13 @@ export default function Contact() {
                   initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="flex h-full min-h-[260px] flex-col items-center justify-center text-center"
+                  className="flex h-full min-h-65 flex-col items-center justify-center text-center"
                 >
                   <div className="mb-3 font-serif text-2xl font-medium">
                     Message sent.
                   </div>
                   <p className="font-mono text-sm text-ink-soft">
-                    We'll get back to you within one business day.
+                    We&apos;ll get back to you within one business day.
                   </p>
                 </motion.div>
               ) : (
@@ -84,7 +84,7 @@ export default function Contact() {
                   </div>
                   <div className="sm:col-span-2">
                     <label className="mb-2 block font-mono text-[11px] uppercase text-ink-soft">
-                      What's going on?
+                      What&apos;s going on?
                     </label>
                     <textarea
                       name="message"
