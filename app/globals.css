@@ -23,4 +23,5 @@
 body {
   background-color: var(--color-bg);
   color: var(--color-ink);
+  font-family: var(--font-plex-mono);
 }
