@@ -40,7 +40,7 @@ export default function Nav() {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
             href="#booking"
-            className="rounded-sharp bg-ink px-5 px-5 pt-3 py-2.5  font-mono text-[0.6rem] uppercase tracking-wide text-bg"
+            className="rounded-sharp bg-ink px-5 pt-3 py-2.5  font-mono text-[0.6rem] uppercase tracking-wide text-bg"
           >
             Book a call
           </motion.a>
