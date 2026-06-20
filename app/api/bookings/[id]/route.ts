@@ -4,8 +4,9 @@ import { getSupabaseServerClient } from "@/lib/supabase-server";
 // PATCH /api/bookings/:id — called when Calendly's postMessage event fires
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   const body = await req.json();
   const { status, calendlyEventUri, calendlyInviteeUri } = body;
 
@@ -17,7 +18,7 @@ export async function PATCH(
       calendly_event_uri: calendlyEventUri,
       calendly_invitee_uri: calendlyInviteeUri,
     })
-    .eq("id", params.id);
+    .eq("id", id);
 
   if (error) {
     console.error(error);
