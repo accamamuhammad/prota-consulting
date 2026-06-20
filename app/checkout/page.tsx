@@ -1,20 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 
 export default function CheckoutPage() {
-  const searchParams = useSearchParams();
-  const bookingId = searchParams.get("bookingId");
-  
-  // 1. Initialize the state directly based on whether bookingId exists
-  const [error, setError] = useState<string | null>(
-    bookingId ? null : "Missing booking reference. Please book a slot first."
-  );
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // 2. If there's no bookingId, skip the fetch entirely
-    if (!bookingId) return;
+    const bookingId = new URLSearchParams(window.location.search).get("bookingId");
+
+    if (!bookingId) {
+      queueMicrotask(() => setError("Missing booking reference. Please book a slot first."));
+      return;
+    }
 
     async function initializePayment() {
       try {
@@ -38,7 +35,7 @@ export default function CheckoutPage() {
     }
 
     initializePayment();
-  }, [bookingId]);
+  }, []);
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-bg px-6">
