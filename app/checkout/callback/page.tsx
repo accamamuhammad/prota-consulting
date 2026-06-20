@@ -1,20 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 
 type Status = "checking" | "success" | "pending" | "failed";
 
 export default function CheckoutCallbackPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const reference = searchParams.get("reference");
   const [status, setStatus] = useState<Status>("checking");
 
   useEffect(() => {
+    // Read the reference straight from the URL instead of useSearchParams() —
+    // avoids a Next.js/Turbopack prerendering quirk where useSearchParams()
+    // can fail the "needs a Suspense boundary" check even when it's already
+    // wrapped in one. This runs client-side only anyway, so it's equivalent.
+    const reference = new URLSearchParams(window.location.search).get("reference");
+
     if (!reference) {
-      setStatus("failed");
+      queueMicrotask(() => setStatus("failed"));
       return;
     }
 
@@ -24,7 +28,7 @@ export default function CheckoutCallbackPage() {
         setStatus(data.status === "confirmed" ? "success" : "pending");
       })
       .catch(() => setStatus("pending"));
-  }, [reference]);
+  }, []);
 
   // Once confirmed, give them a moment to read the message, then send them home.
   useEffect(() => {

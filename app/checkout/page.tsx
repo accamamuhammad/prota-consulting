@@ -6,13 +6,15 @@ import { useSearchParams } from "next/navigation";
 export default function CheckoutPage() {
   const searchParams = useSearchParams();
   const bookingId = searchParams.get("bookingId");
-  const [error, setError] = useState<string | null>(null);
+  
+  // 1. Initialize the state directly based on whether bookingId exists
+  const [error, setError] = useState<string | null>(
+    bookingId ? null : "Missing booking reference. Please book a slot first."
+  );
 
   useEffect(() => {
-    if (!bookingId) {
-      setError("Missing booking reference. Please book a slot first.");
-      return;
-    }
+    // 2. If there's no bookingId, skip the fetch entirely
+    if (!bookingId) return;
 
     async function initializePayment() {
       try {
@@ -28,7 +30,6 @@ export default function CheckoutPage() {
           return;
         }
 
-        // Redirect to Paystack's hosted payment page
         window.location.href = data.authorizationUrl;
       } catch (err) {
         console.error(err);

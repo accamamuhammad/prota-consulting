@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import Nav from "@/components/Nav";
 import BookedBanner from "@/components/BookedBanner";
 import Hero from "@/components/Hero";
@@ -12,9 +11,7 @@ import Contact from "@/components/Contact";
 export default function HomePage() {
   return (
     <main>
-      <Suspense fallback={null}>
-        <BookedBanner />
-      </Suspense>
+      <BookedBanner />
       <Nav />
       <Hero />
       <About />

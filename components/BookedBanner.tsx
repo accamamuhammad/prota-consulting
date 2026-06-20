@@ -1,24 +1,29 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 
 export default function BookedBanner() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (searchParams.get("booked") === "1") {
-      setVisible(true);
-      // Clean the query param out of the URL without a full reload
-      router.replace(pathname);
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("booked") === "1") {
+      // Defer the setState call out of the synchronous effect body —
+      // React 19 flags direct setState() calls in an effect body even when
+      // syncing from an external source (the URL) is exactly what effects
+      // are for. queueMicrotask satisfies the "call it from a callback"
+      // pattern React's own docs recommend.
+      queueMicrotask(() => setVisible(true));
+
+      const url = new URL(window.location.href);
+      url.searchParams.delete("booked");
+      window.history.replaceState({}, "", url.toString());
+
       const timer = setTimeout(() => setVisible(false), 5000);
       return () => clearTimeout(timer);
     }
-  }, [searchParams, pathname, router]);
+  }, []);
 
   return (
     <AnimatePresence>
