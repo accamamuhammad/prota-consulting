@@ -25,7 +25,7 @@ function GrowthChart() {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-      className="rounded-t-2xl border-t border-line bg-white shadow-[0_-1px_0_var(--color-line)] overflow-hidden"
+      className="rounded-t-2xl border-t border-line bg-white shadow-[0_-1px_0_theme(colors.line)] overflow-hidden"
     >
       <div className="flex items-center justify-between border-b border-line px-6 py-3.5 font-mono text-[11px] uppercase tracking-wide text-ink-soft">
         <span>client-outcomes.report</span>
@@ -36,7 +36,7 @@ function GrowthChart() {
         </div>
       </div>
 
-      <div className="relative flex h-70 items-end gap-0.75 px-6 pt-12 sm:h-90 sm:px-10">
+      <div className="relative flex h-[280px] items-end gap-[3px] px-6 pt-12 sm:h-[360px] sm:px-10">
         <div className="absolute bottom-4 left-6 flex items-center gap-2 font-mono text-xs uppercase text-ink-soft sm:left-10">
           <span className="rounded-sharp bg-indigo px-2 py-1 text-[11px] text-white">
             +38%
@@ -61,7 +61,7 @@ function GrowthChart() {
               ease: "easeOut",
             }}
             style={{ transformOrigin: "bottom" }}
-            className="flex flex-1 flex-col-reverse gap-0.75"
+            className="flex flex-1 flex-col-reverse gap-[3px]"
           >
             {col.map((kind, s) => (
               <i
@@ -94,7 +94,7 @@ export default function Hero() {
         initial="hidden"
         animate="show"
         transition={{ staggerChildren: 0.12, delayChildren: 0.05 }}
-        className="mx-auto max-w-295 px-8"
+        className="mx-auto max-w-[1180px] px-8"
       >
         <motion.div
           variants={fadeUp}
@@ -119,7 +119,7 @@ export default function Hero() {
         <motion.p
           variants={fadeUp}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mx-auto mb-10 max-w-135 text-center font-mono text-[15px] leading-relaxed text-ink-soft"
+          className="mx-auto mb-10 max-w-[540px] text-center font-mono text-[15px] leading-relaxed text-ink-soft"
         >
           Prota Consulting helps founders and operators turn scattered
           priorities into a plan they can actually execute — backed by data,
@@ -134,7 +134,7 @@ export default function Hero() {
           <motion.a
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
-            href="#booking"
+            href="/booking"
             className="rounded-sharp bg-indigo px-6 py-3.5 font-mono text-[13px] uppercase tracking-wide text-white"
           >
             Book a consultation →

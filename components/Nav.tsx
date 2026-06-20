@@ -16,15 +16,15 @@ export default function Nav() {
 
   return (
     <nav className="border-b border-line bg-bg">
-      <div className="mx-auto flex items-center justify-between px-8 py-5">
-        <a href="#" className="flex items-center gap-2 pt-2 text-sm font-semibold uppercase">
-          <span className="relative inline-block h-4.5 w-4.5 rounded-sharp bg-ink">
-            <span className="absolute inset-1.25 bg-indigo" />
+      <div className="mx-auto flex max-w-[1180px] items-center justify-between px-3 py-4 sm:px-4">
+        <a href="#" className="flex items-center gap-2 text-[13px] font-semibold uppercase">
+          <span className="relative inline-block h-[15px] w-[15px] rounded-sharp bg-ink">
+            <span className="absolute inset-[4px] bg-indigo" />
           </span>
           Prota Consulting
         </a>
 
-        <div className="hidden items-center gap-9 font-mono text-[0.65rem] pt-2 uppercase md:flex">
+        <div className="hidden items-center gap-7 font-mono text-[11px] uppercase md:flex">
           {LINKS.map((l) => (
             <a key={l.href} href={l.href} className="text-ink opacity-75 transition-opacity hover:opacity-100">
               {l.label}
@@ -32,15 +32,15 @@ export default function Nav() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3.5 md:flex">
-          <a href="#" className="rounded-sharp border border-ink px-5 pt-3 py-2 font-mono text-[0.6rem] uppercase tracking-wide text-ink">
+        <div className="hidden items-center gap-2.5 md:flex">
+          <a href="#" className="rounded-sharp border border-ink px-4 py-2 font-mono text-[11px] uppercase tracking-wide text-ink">
             Log in
           </a>
           <motion.a
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
-            href="#booking"
-            className="rounded-sharp bg-ink px-5 pt-3 py-2.5  font-mono text-[0.6rem] uppercase tracking-wide text-bg"
+            href="/booking"
+            className="rounded-sharp bg-ink px-4 py-2 font-mono text-[11px] uppercase tracking-wide text-bg"
           >
             Book a call
           </motion.a>
@@ -85,7 +85,7 @@ export default function Nav() {
                 </a>
               ))}
               <a
-                href="#booking"
+                href="/booking"
                 onClick={() => setOpen(false)}
                 className="mt-3 rounded-sharp bg-ink px-5 py-3 text-center text-bg"
               >
