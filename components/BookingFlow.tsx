@@ -84,7 +84,7 @@ export default function BookingFlow() {
   return (
     <div>
       <div className="mb-10 flex items-center gap-2.5 font-mono text-[12.5px] uppercase text-ink-soft">
-        <span className="inline-block h-0.5 w-4.5 bg-indigo" />
+        <span className="inline-block h-[2px] w-[18px] bg-indigo" />
         Book a consultation
       </div>
 
@@ -98,10 +98,10 @@ export default function BookingFlow() {
             transition={{ duration: 0.3 }}
           >
             <h1 className="mb-3 font-serif text-3xl font-medium">
-              First, tell us who&apos;s joining.
+              First, tell us who's joining.
             </h1>
             <p className="mb-8 text-sm text-ink-soft">
-              We&apos;ll use this to pre-fill your calendar invite and follow up
+              We'll use this to pre-fill your calendar invite and follow up
               after the call.
             </p>
 
@@ -152,8 +152,8 @@ export default function BookingFlow() {
               Pick a time, {lead.name.split(" ")[0]}.
             </h1>
             <p className="mb-6 text-sm text-ink-soft">
-              Choose a slot below — you&apos;ll get a confirmation email from
-              Calendly once it&apos;s booked.
+              Choose a slot below — you'll get a confirmation email from
+              Calendly once it's booked.
             </p>
 
             <div
@@ -173,16 +173,16 @@ export default function BookingFlow() {
             className="flex flex-col items-center rounded-sharp border border-line bg-white px-8 py-16 text-center"
           >
             <h1 className="mb-3 font-serif text-3xl font-medium">
-              You&apos;re booked.
+              You're booked.
             </h1>
-            <p className="mb-8 max-w-105 text-sm leading-relaxed text-ink-soft">
-              Check your inbox for the calendar invite. Next, let&apos;s confirm
+            <p className="mb-8 max-w-[420px] text-sm leading-relaxed text-ink-soft">
+              Check your inbox for the calendar invite. Next, let's confirm
               payment to lock in your slot.
             </p>
             <motion.a
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.97 }}
-              href="/checkout"
+              href={`/checkout?bookingId=${bookingId}`}
               className="rounded-sharp bg-indigo px-6 py-3.5 font-mono text-[13px] uppercase tracking-wide text-white"
             >
               Continue to payment →
