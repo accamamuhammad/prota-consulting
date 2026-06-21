@@ -1,6 +1,6 @@
 import Nav from "@/components/Nav";
 import PageHeader from "@/components/PageHeader";
-import CaseStudies from "@/components/CaseStudies";
+import CaseStudies from "@/components/Casestudies";
 import Testimonials from "@/components/Testimonials";
 import CTABanner from "@/components/CTABanner";
 
