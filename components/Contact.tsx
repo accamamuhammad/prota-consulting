@@ -8,13 +8,45 @@ const fadeUp = {
   show: { opacity: 1, y: 0 },
 };
 
-export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+type SendState = "idle" | "sending" | "sent" | "error";
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+export default function Contact() {
+  const [sendState, setSendState] = useState<SendState>("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: wire up to Supabase (insert into a `messages` table) or an API route.
-    setSubmitted(true);
+    setSendState("sending");
+    setErrorMsg(null);
+
+    const form = new FormData(e.currentTarget);
+    const payload = {
+      name: String(form.get("name") || ""),
+      email: String(form.get("email") || ""),
+      company: String(form.get("company") || ""),
+      message: String(form.get("message") || ""),
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(data.error || "Something went wrong. Try again.");
+        setSendState("error");
+        return;
+      }
+
+      setSendState("sent");
+    } catch (err) {
+      console.error(err);
+      setErrorMsg("Could not reach the server. Check your connection and try again.");
+      setSendState("error");
+    }
   }
 
   return (
@@ -24,19 +56,19 @@ export default function Contact() {
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
         transition={{ staggerChildren: 0.12 }}
-        className="mx-auto max-w-295 px-8"
+        className="mx-auto max-w-[1180px] px-8"
       >
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.8fr_1.2fr]">
           <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: "easeOut" }}>
             <div className="mb-5 flex items-center gap-2.5 font-mono text-[12.5px] uppercase text-ink-soft">
-              <span className="inline-block h-0.5 w-4.5 bg-indigo" />
+              <span className="inline-block h-[2px] w-[18px] bg-indigo" />
               Contact
             </div>
             <h2 className="mb-5 font-serif text-[34px] font-medium leading-[1.15] sm:text-[42px]">
               Not ready to book? Just ask.
             </h2>
-            <p className="max-w-95 text-[15px] leading-relaxed text-ink-soft">
-              Send a few lines about what you&apos;re working on. We reply within
+            <p className="max-w-[380px] text-[15px] leading-relaxed text-ink-soft">
+              Send a few lines about what you're working on. We reply within
               one business day.
             </p>
 
@@ -52,19 +84,19 @@ export default function Contact() {
             className="rounded-sharp border border-line bg-white p-8"
           >
             <AnimatePresence mode="wait">
-              {submitted ? (
+              {sendState === "sent" ? (
                 <motion.div
                   key="success"
                   initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="flex h-full min-h-65 flex-col items-center justify-center text-center"
+                  className="flex h-full min-h-[260px] flex-col items-center justify-center text-center"
                 >
                   <div className="mb-3 font-serif text-2xl font-medium">
                     Message sent.
                   </div>
                   <p className="font-mono text-sm text-ink-soft">
-                    We&apos;ll get back to you within one business day.
+                    We'll get back to you within one business day.
                   </p>
                 </motion.div>
               ) : (
@@ -84,7 +116,7 @@ export default function Contact() {
                   </div>
                   <div className="sm:col-span-2">
                     <label className="mb-2 block font-mono text-[11px] uppercase text-ink-soft">
-                      What&apos;s going on?
+                      What's going on?
                     </label>
                     <textarea
                       name="message"
@@ -94,14 +126,22 @@ export default function Contact() {
                       placeholder="Tell us a little about what you need help with."
                     />
                   </div>
+
+                  {sendState === "error" && errorMsg && (
+                    <div className="sm:col-span-2 rounded-sharp border border-red-200 bg-red-50 px-4 py-3 font-mono text-xs text-red-700">
+                      {errorMsg}
+                    </div>
+                  )}
+
                   <div className="sm:col-span-2">
                     <motion.button
                       whileHover={{ y: -2 }}
                       whileTap={{ scale: 0.97 }}
                       type="submit"
-                      className="rounded-sharp bg-ink px-6 py-3.5 font-mono text-[13px] uppercase tracking-wide text-bg"
+                      disabled={sendState === "sending"}
+                      className="rounded-sharp bg-ink px-6 py-3.5 font-mono text-[13px] uppercase tracking-wide text-bg disabled:opacity-60"
                     >
-                      Send message →
+                      {sendState === "sending" ? "Sending…" : "Send message →"}
                     </motion.button>
                   </div>
                 </motion.form>
