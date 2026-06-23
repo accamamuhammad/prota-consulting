@@ -24,12 +24,12 @@ export default function Booking() {
               Get started
             </div>
             <h2 className="mb-5 max-w-[520px] font-serif text-[34px] font-medium leading-[1.15] sm:text-[42px]">
-              Let's find the bottleneck in 30 minutes.
+              See your own data in Loopline, live.
             </h2>
             <p className="mb-8 max-w-[460px] text-[15px] leading-relaxed text-[#B8B7BD]">
-              Book a free intro call. We'll talk through where things stand
-              today and whether Prota is the right fit — no pitch deck
-              required.
+              Book a 30-minute demo and we'll walk through your billing and
+              usage data on the call — no generic slide deck, just your
+              actual accounts.
             </p>
             <motion.a
               whileHover={{ y: -2 }}
@@ -37,7 +37,7 @@ export default function Booking() {
               href="/booking"
               className="inline-block rounded-sharp bg-[#8B85F5] px-6 py-3.5 font-mono text-[13px] uppercase tracking-wide text-ink"
             >
-              Book a consultation →
+              Book a demo →
             </motion.a>
           </motion.div>
 

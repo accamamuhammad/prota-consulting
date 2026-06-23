@@ -3,10 +3,10 @@
 import { motion } from "motion/react";
 
 const MILESTONES = [
-  { year: "2013", label: "Started as an in-house operator role, leading growth at a Lagos-based retail group." },
-  { year: "2017", label: "Took on first independent advisory clients alongside full-time operating work." },
-  { year: "2020", label: "Went full-time as an independent consultant, focused on strategy and operations." },
-  { year: "2024", label: "Founded Prota Consulting to formalize the practice and bring on a small team." },
+  { year: "2022", label: "Started as an internal tool, built to track churn risk across a portfolio of SaaS clients." },
+  { year: "2023", label: "Rebuilt as a standalone product after three different teams asked to use it directly." },
+  { year: "2024", label: "Launched the Stripe and Segment integrations, moving from manual CSV imports to live data." },
+  { year: "2025", label: "Crossed 40 SaaS teams using Loopline to track retention and expansion in one place." },
 ];
 
 const fadeUp = {
@@ -27,10 +27,10 @@ export default function Timeline() {
         >
           <div className="mb-5 flex items-center gap-2.5 font-mono text-[12.5px] uppercase text-ink-soft">
             <span className="inline-block h-[2px] w-[18px] bg-indigo" />
-            The path here
+            How we got here
           </div>
           <h2 className="max-w-[640px] font-serif text-[34px] font-medium leading-[1.15] sm:text-[42px]">
-            A decade of being on the inside, not just advising from it.
+            Built out of a real problem, not a hackathon idea.
           </h2>
         </motion.div>
 
@@ -42,15 +42,8 @@ export default function Timeline() {
           className="mx-auto max-w-[700px] divide-y divide-line border-y border-line"
         >
           {MILESTONES.map((m) => (
-            <motion.div
-              key={m.year}
-              variants={fadeUp}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="flex gap-8 py-6"
-            >
-              <div className="w-16 flex-shrink-0 font-serif text-xl font-medium text-indigo">
-                {m.year}
-              </div>
+            <motion.div key={m.year} variants={fadeUp} transition={{ duration: 0.4, ease: "easeOut" }} className="flex gap-8 py-6">
+              <div className="w-16 flex-shrink-0 font-serif text-xl font-medium text-indigo">{m.year}</div>
               <p className="text-sm leading-relaxed text-ink-soft">{m.label}</p>
             </motion.div>
           ))}

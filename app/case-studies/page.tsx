@@ -9,16 +9,13 @@ export default function CaseStudiesPage() {
     <main>
       <Nav />
       <PageHeader
-        eyebrow="Case Studies"
-        title="Proof, not promises."
-        description="A look at the kind of outcomes we aim for — and what clients say about getting there."
+        eyebrow="Customers"
+        title="What teams see after switching on Loopline."
+        description="Real outcomes from teams who went from finding out about churn at renewal to catching it weeks earlier."
       />
       <CaseStudies />
       <Testimonials />
-      <CTABanner
-        title="Want results like these?"
-        description="Tell us what you're working on and we'll tell you honestly if we can help."
-      />
+      <CTABanner title="Want results like these?" description="See what Loopline would flag in your own accounts — free for 14 days." />
     </main>
   );
 }

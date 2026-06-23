@@ -35,7 +35,7 @@ export default function BookedBanner() {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed left-1/2 top-5 z-50 -translate-x-1/2 rounded-sharp bg-ink px-5 py-3 font-mono text-[12.5px] uppercase tracking-wide text-bg shadow-lg"
         >
-          ✓ Booking confirmed — check your email for details
+          ✓ You're all set — check your email to finish setup
         </motion.div>
       )}
     </AnimatePresence>

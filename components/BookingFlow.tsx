@@ -85,7 +85,7 @@ export default function BookingFlow() {
     <div>
       <div className="mb-10 flex items-center gap-2.5 font-mono text-[12.5px] uppercase text-ink-soft">
         <span className="inline-block h-[2px] w-[18px] bg-indigo" />
-        Book a consultation
+        Book a demo
       </div>
 
       <AnimatePresence mode="wait">
@@ -98,11 +98,11 @@ export default function BookingFlow() {
             transition={{ duration: 0.3 }}
           >
             <h1 className="mb-3 font-serif text-3xl font-medium">
-              First, tell us who's joining.
+              First, a bit about your team.
             </h1>
             <p className="mb-8 text-sm text-ink-soft">
-              We'll use this to pre-fill your calendar invite and follow up
-              after the call.
+              We'll use this to pre-fill your calendar invite and tailor the
+              demo to your stack.
             </p>
 
             <form onSubmit={handleDetailsSubmit} className="grid gap-5">
@@ -152,8 +152,8 @@ export default function BookingFlow() {
               Pick a time, {lead.name.split(" ")[0]}.
             </h1>
             <p className="mb-6 text-sm text-ink-soft">
-              Choose a slot below — you'll get a confirmation email from
-              Calendly once it's booked.
+              Choose a slot below — you'll get a calendar invite with a Loopline
+              team member once it's booked.
             </p>
 
             <div
@@ -173,11 +173,11 @@ export default function BookingFlow() {
             className="flex flex-col items-center rounded-sharp border border-line bg-white px-8 py-16 text-center"
           >
             <h1 className="mb-3 font-serif text-3xl font-medium">
-              You're booked.
+              Demo booked.
             </h1>
             <p className="mb-8 max-w-[420px] text-sm leading-relaxed text-ink-soft">
-              Check your inbox for the calendar invite. Next, let's confirm
-              payment to lock in your slot.
+              Check your inbox for the calendar invite. Want to start exploring
+              Loopline before the call? Start a free trial below.
             </p>
             <motion.a
               whileHover={{ y: -2 }}
@@ -185,7 +185,7 @@ export default function BookingFlow() {
               href={`/checkout?bookingId=${bookingId}`}
               className="rounded-sharp bg-indigo px-6 py-3.5 font-mono text-[13px] uppercase tracking-wide text-white"
             >
-              Continue to payment →
+              Start free trial →
             </motion.a>
           </motion.div>
         )}

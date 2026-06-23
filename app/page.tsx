@@ -1,8 +1,10 @@
 import Nav from "@/components/Nav";
 import BookedBanner from "@/components/BookedBanner";
 import Hero from "@/components/Hero";
+import LogosBar from "@/components/LogosBar";
 import About from "@/components/About";
 import Services from "@/components/Services";
+import Integrations from "@/components/Integrations";
 import CaseStudies from "@/components/Casestudies";
 import Booking from "@/components/Booking";
 import Pricing from "@/components/Pricing";
@@ -14,8 +16,10 @@ export default function HomePage() {
       <BookedBanner />
       <Nav />
       <Hero />
+      <LogosBar />
       <About />
       <Services />
+      <Integrations />
       <CaseStudies />
       <Booking />
       <Pricing />

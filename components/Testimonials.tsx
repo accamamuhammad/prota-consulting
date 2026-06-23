@@ -5,15 +5,15 @@ import { motion } from "motion/react";
 const TESTIMONIALS = [
   {
     quote:
-      "We went into the engagement thinking we had a marketing problem. Turned out it was an ops problem wearing a marketing costume.",
-    name: "Founder",
-    company: "DTC retail brand",
+      "We thought we had a sales problem. Loopline's cohort data showed us it was actually an onboarding problem — accounts that didn't activate in week one churned at 4x the rate.",
+    name: "Head of Growth",
+    company: "Series A workflow SaaS",
   },
   {
     quote:
-      "Most consultants hand you a deck. Prota stayed until our sales team was actually running the new process on their own.",
-    name: "VP Sales",
-    company: "B2B SaaS, Series A",
+      "The Slack alert on usage drop-off has paid for the subscription a dozen times over. We catch accounts before they even open a support ticket.",
+    name: "VP Customer Success",
+    company: "B2B analytics platform",
   },
 ];
 

@@ -5,21 +5,21 @@ import { motion } from "motion/react";
 const VALUES = [
   {
     number: "01",
-    title: "Diagnose before prescribing",
+    title: "Signal over noise",
     description:
-      "We don't sell a framework before understanding your actual numbers. Every engagement starts with a real look at what's happening.",
+      "Most retention dashboards bury you in charts. We surface the three accounts that actually need attention this week, not forty you'll never act on.",
   },
   {
     number: "02",
-    title: "Plans you can run, not just read",
+    title: "Built from real billing data",
     description:
-      "If a recommendation needs a 40-page deck to explain, it's too complicated to execute. We aim for clarity over cleverness.",
+      "Loopline reads directly from Stripe and your product analytics — not a CSV someone forgot to update last quarter.",
   },
   {
     number: "03",
-    title: "Stay until it moves",
+    title: "Alerts you'll actually see",
     description:
-      "We don't hand off a strategy and disappear. We're in the room for implementation, not just the planning session.",
+      "A dashboard nobody opens doesn't save an account. That's why every risk signal can land directly in Slack, where your team already lives.",
   },
 ];
 
@@ -42,10 +42,10 @@ export default function Values() {
         >
           <div className="mb-5 flex items-center gap-2.5 font-mono text-[12.5px] uppercase text-ink-soft">
             <span className="inline-block h-[2px] w-[18px] bg-indigo" />
-            How we operate
+            How we think about it
           </div>
           <h2 className="max-w-[640px] font-serif text-[34px] font-medium leading-[1.15] sm:text-[42px]">
-            Three principles behind every engagement.
+            Three principles behind how Loopline is built.
           </h2>
         </motion.div>
 

@@ -7,24 +7,20 @@ import CTABanner from "@/components/CTABanner";
 
 const FAQ_ITEMS = [
   {
-    question: "How long does a typical engagement take?",
-    answer:
-      "Most engagements run 4-8 weeks for a focused sprint, or ongoing for retainer clients. We scope timeline based on what we find during the diagnostic phase.",
+    question: "How long does setup take?",
+    answer: "Most teams are live within a day. Connecting Stripe and your product analytics takes about 10 minutes; the rest is Loopline scoring your existing accounts.",
   },
   {
-    question: "Do you work with early-stage companies?",
-    answer:
-      "Yes — we work with founders pre-seed through Series B+, as well as established operators looking to fix a specific bottleneck.",
+    question: "Do you require a minimum number of accounts?",
+    answer: "No — Starter works for teams with a few hundred tracked accounts, and you can upgrade as you grow.",
   },
   {
-    question: "What industries do you typically work in?",
-    answer:
-      "Mostly DTC/retail, B2B SaaS, and professional services, but the underlying problems — unclear priorities, broken handoffs, pricing that doesn't match value — show up everywhere.",
+    question: "What data sources does Loopline need?",
+    answer: "At minimum, billing data from Stripe. Product usage data (via Segment or a direct API) makes the risk scoring meaningfully more accurate.",
   },
   {
-    question: "Is the intro call really free?",
-    answer:
-      "Yes. It's 30 minutes to understand what's going on and tell you honestly whether we're the right fit — no obligation either way.",
+    question: "Is the free trial really free?",
+    answer: "Yes, 14 days, full access, no card required to start. You'll only be asked for billing details if you choose to continue after the trial.",
   },
 ];
 
@@ -33,17 +29,14 @@ export default function ServicesPage() {
     <main>
       <Nav />
       <PageHeader
-        eyebrow="Services"
-        title="Three ways we can help."
-        description="Three focused offerings, each built to end in something you can actually run — not just a deck you file away."
+        eyebrow="Product"
+        title="Everything you need to see churn coming."
+        description="Three core pieces, built to work together — risk scoring, real-time alerts, and the dashboards your leadership team actually asks for."
       />
       <Services />
       <Process />
-      <FAQ title="Common questions about working together." items={FAQ_ITEMS} />
-      <CTABanner
-        title="Let's find the bottleneck."
-        description="Book a free intro call and we'll talk through where things stand today."
-      />
+      <FAQ title="Common questions about the product." items={FAQ_ITEMS} />
+      <CTABanner title="Ready to see your own data in it?" description="Start a free trial or book a demo — either way, no commitment." />
     </main>
   );
 }

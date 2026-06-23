@@ -1,9 +1,10 @@
 "use client";
 
 import { useMemo } from "react";
+import Link from "next/link";
 import { motion } from "motion/react";
 
-function GrowthChart() {
+function DashboardPreview() {
   const columns = useMemo(() => {
     const cols = 48;
     return Array.from({ length: cols }, (_, i) => {
@@ -28,7 +29,7 @@ function GrowthChart() {
       className="rounded-t-2xl border-t border-line bg-white shadow-[0_-1px_0_theme(colors.line)] overflow-hidden"
     >
       <div className="flex items-center justify-between border-b border-line px-6 py-3.5 font-mono text-[11px] uppercase tracking-wide text-ink-soft">
-        <span>client-outcomes.report</span>
+        <span>loopline.app/dashboard</span>
         <div className="flex gap-1.5">
           <span className="h-2.5 w-2.5 rounded-full bg-line" />
           <span className="h-2.5 w-2.5 rounded-full bg-line" />
@@ -38,16 +39,14 @@ function GrowthChart() {
 
       <div className="relative flex h-[280px] items-end gap-[3px] px-6 pt-12 sm:h-[360px] sm:px-10">
         <div className="absolute bottom-4 left-6 flex items-center gap-2 font-mono text-xs uppercase text-ink-soft sm:left-10">
-          <span className="rounded-sharp bg-indigo px-2 py-1 text-[11px] text-white">
-            +38%
-          </span>
-          avg. revenue lift, 6 months post-engagement
+          <span className="rounded-sharp bg-indigo px-2 py-1 text-[11px] text-white">96.4%</span>
+          net revenue retention, last 90 days
         </div>
 
         <div className="absolute right-6 top-12 hidden rounded-md bg-ink px-3.5 py-2.5 font-mono text-xs leading-relaxed text-bg sm:right-10 sm:block">
-          Q1 → Q4
+          Churn risk flagged
           <br />
-          <b className="text-[#8B85F5]">Run-rate +2.4x</b>
+          <b className="text-[#8B85F5]">12 accounts this week</b>
         </div>
 
         {columns.map((col, i) => (
@@ -55,11 +54,7 @@ function GrowthChart() {
             key={i}
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1 }}
-            transition={{
-              duration: 0.5,
-              delay: 0.7 + i * 0.012,
-              ease: "easeOut",
-            }}
+            transition={{ duration: 0.5, delay: 0.7 + i * 0.012, ease: "easeOut" }}
             style={{ transformOrigin: "bottom" }}
             className="flex flex-1 flex-col-reverse gap-[3px]"
           >
@@ -67,11 +62,7 @@ function GrowthChart() {
               <i
                 key={s}
                 className={`block h-1.5 w-full rounded-[1px] ${
-                  kind === "on"
-                    ? "bg-indigo"
-                    : kind === "fade"
-                    ? "bg-[#C9C4F7]"
-                    : "bg-indigo-soft"
+                  kind === "on" ? "bg-indigo" : kind === "fade" ? "bg-[#C9C4F7]" : "bg-indigo-soft"
                 }`}
               />
             ))}
@@ -101,19 +92,19 @@ export default function Hero() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="mb-7 flex items-center justify-center gap-2.5 font-mono text-[12.5px] uppercase text-ink-soft"
         >
-          <span className="inline-block h-0.5 w-4.5 bg-indigo" />
-          Strategy &nbsp;·&nbsp; Operations &nbsp;·&nbsp; Growth
-          <span className="inline-block h-0.5 w-4.5 bg-indigo" />
+          <span className="inline-block h-[2px] w-[18px] bg-indigo" />
+          Retention analytics for B2B SaaS
+          <span className="inline-block h-[2px] w-[18px] bg-indigo" />
         </motion.div>
 
         <motion.h1
           variants={fadeUp}
           transition={{ duration: 0.55, ease: "easeOut" }}
-          className="mx-auto mb-7 max-w-220 text-center font-serif text-[40px] font-medium leading-[1.08] tracking-[-0.01em] sm:text-[56px] lg:text-[72px]"
+          className="mx-auto mb-7 max-w-[880px] text-center font-serif text-[40px] font-medium leading-[1.08] tracking-[-0.01em] sm:text-[56px] lg:text-[72px]"
         >
-          Clarity for decisions
+          Know which customers
           <br />
-          that move the business <em className="italic text-indigo">forward</em>.
+          are about to <em className="italic text-indigo">churn</em>, before they do.
         </motion.h1>
 
         <motion.p
@@ -121,9 +112,9 @@ export default function Hero() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="mx-auto mb-10 max-w-[540px] text-center font-mono text-[15px] leading-relaxed text-ink-soft"
         >
-          Prota Consulting helps founders and operators turn scattered
-          priorities into a plan they can actually execute — backed by data,
-          not guesswork.
+          Loopline connects to your billing and product data to flag at-risk
+          accounts, track expansion revenue, and show you exactly where NRR is
+          leaking — before it shows up in the board deck.
         </motion.p>
 
         <motion.div
@@ -131,27 +122,21 @@ export default function Hero() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="mb-16 flex flex-col items-center justify-center gap-3.5 sm:flex-row"
         >
-          <motion.a
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            href="/booking"
-            className="rounded-sharp bg-indigo px-6 py-3.5 font-mono text-[13px] uppercase tracking-wide text-white"
-          >
-            Book a consultation →
-          </motion.a>
-          <motion.a
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            href="#services"
-            className="rounded-sharp border border-ink px-6 py-3.5 font-mono text-[13px] uppercase tracking-wide text-ink"
-          >
-            See services
-          </motion.a>
+          <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+            <Link href="/checkout" className="rounded-sharp bg-indigo px-6 py-3.5 font-mono text-[13px] uppercase tracking-wide text-white">
+              Start free trial →
+            </Link>
+          </motion.div>
+          <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+            <Link href="/booking" className="rounded-sharp border border-ink px-6 py-3.5 font-mono text-[13px] uppercase tracking-wide text-ink">
+              Book a demo
+            </Link>
+          </motion.div>
         </motion.div>
       </motion.div>
 
       <div className="mx-2 px-2">
-        <GrowthChart />
+        <DashboardPreview />
       </div>
     </section>
   );

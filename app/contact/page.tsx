@@ -5,19 +5,16 @@ import FAQ from "@/components/FAQ";
 
 const FAQ_ITEMS = [
   {
-    question: "What's the fastest way to reach you?",
-    answer:
-      "For anything time-sensitive, booking a call directly is faster than email — you'll get a response in the call itself rather than waiting on a thread.",
+    question: "What's the fastest way to reach the team?",
+    answer: "For anything sales-related, booking a demo is faster than email. For support questions on an existing account, use the in-app chat once you're logged in.",
   },
   {
     question: "How quickly do you respond to messages?",
-    answer:
-      "Within one business day, usually faster. If it's urgent, mention that in your message.",
+    answer: "Within one business day, usually faster during US/EU business hours.",
   },
   {
-    question: "Do you take on projects outside Nigeria?",
-    answer:
-      "Yes — we work with clients globally and are fully remote-friendly. Time zone overlap is the only real constraint.",
+    question: "Do you work with companies outside the US?",
+    answer: "Yes — Loopline is used by teams across North America, Europe, and Africa. Billing supports both USD and NGN.",
   },
 ];
 
@@ -27,8 +24,8 @@ export default function ContactPage() {
       <Nav />
       <PageHeader
         eyebrow="Contact"
-        title="Let's talk it through."
-        description="Send a few lines about what you're working on, or book a free call directly if you'd rather talk it through."
+        title="Questions before you start a trial?"
+        description="Send us a message, or book a demo directly if you'd rather walk through it live."
       />
       <Contact />
       <FAQ eyebrow="Before you write in" title="A few things people usually ask." items={FAQ_ITEMS} />

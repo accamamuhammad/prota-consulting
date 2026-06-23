@@ -2,27 +2,24 @@
 
 import { motion } from "motion/react";
 
-const CASE_STUDIES = [
+const CUSTOMERS = [
   {
-    client: "DTC retail brand",
-    metric: "+42%",
-    metricLabel: "repeat purchase rate",
-    summary:
-      "Rebuilt the post-purchase journey and pricing ladder over a 10-week sprint.",
+    client: "Series A vertical SaaS",
+    metric: "6% → 3.1%",
+    metricLabel: "monthly churn, in 90 days",
+    summary: "Used churn risk scores to triage their CS team's outreach instead of calling every account equally.",
   },
   {
-    client: "B2B SaaS, Series A",
-    metric: "2.1x",
-    metricLabel: "sales cycle speed",
-    summary:
-      "Restructured the sales process and handoffs between marketing and AEs.",
+    client: "B2B workflow tool",
+    metric: "+22%",
+    metricLabel: "net revenue retention",
+    summary: "Spotted expansion-ready accounts earlier using usage cohort data, fed straight to the sales team.",
   },
   {
-    client: "Professional services firm",
-    metric: "−31%",
-    metricLabel: "operating overhead",
-    summary:
-      "Mapped delivery operations end-to-end and cut three redundant steps.",
+    client: "Usage-based analytics platform",
+    metric: "−41%",
+    metricLabel: "time to flag at-risk accounts",
+    summary: "Replaced a manual weekly spreadsheet review with real-time Slack alerts on usage drop-off.",
   },
 ];
 
@@ -34,7 +31,7 @@ const fadeUp = {
 export default function CaseStudies() {
   return (
     <section id="case-studies" className="border-t border-line bg-bg py-24">
-      <div className="mx-auto max-w-295 px-8">
+      <div className="mx-auto max-w-[1180px] px-8">
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -43,11 +40,11 @@ export default function CaseStudies() {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <div className="mb-5 flex items-center gap-2.5 font-mono text-[12.5px] uppercase text-ink-soft">
-            <span className="inline-block h-0.5 w-4.5 bg-indigo" />
-            Case studies
+            <span className="inline-block h-[2px] w-[18px] bg-indigo" />
+            Customers
           </div>
-          <h2 className="mb-14 max-w-160 font-serif text-[34px] font-medium leading-[1.15] sm:text-[42px]">
-            Results clients can point to, not just feel.
+          <h2 className="mb-14 max-w-[640px] font-serif text-[34px] font-medium leading-[1.15] sm:text-[42px]">
+            Results teams see in their first quarter.
           </h2>
         </motion.div>
 
@@ -58,28 +55,14 @@ export default function CaseStudies() {
           transition={{ staggerChildren: 0.1 }}
           className="grid grid-cols-1 gap-px overflow-hidden rounded-sharp border border-line bg-line sm:grid-cols-3"
         >
-          {CASE_STUDIES.map((c) => (
-            <motion.div
-              key={c.client}
-              variants={fadeUp}
-              transition={{ duration: 0.45, ease: "easeOut" }}
-              whileHover={{ backgroundColor: "#FBFBFA" }}
-              className="flex flex-col bg-white p-8"
-            >
+          {CUSTOMERS.map((c) => (
+            <motion.div key={c.client} variants={fadeUp} transition={{ duration: 0.45, ease: "easeOut" }} whileHover={{ backgroundColor: "#FBFBFA" }} className="flex flex-col bg-white p-8">
               <div className="mb-8 flex items-baseline gap-2">
-                <span className="font-serif text-4xl font-medium text-indigo">
-                  {c.metric}
-                </span>
+                <span className="font-serif text-4xl font-medium text-indigo">{c.metric}</span>
               </div>
-              <div className="mb-1 font-mono text-[11px] uppercase tracking-wide text-ink-soft">
-                {c.metricLabel}
-              </div>
-              <p className="mb-6 mt-4 flex-1 text-sm leading-relaxed text-ink-soft">
-                {c.summary}
-              </p>
-              <div className="border-t border-dashed border-line pt-4 font-mono text-xs uppercase text-ink">
-                {c.client}
-              </div>
+              <div className="mb-1 font-mono text-[11px] uppercase tracking-wide text-ink-soft">{c.metricLabel}</div>
+              <p className="mb-6 mt-4 flex-1 text-sm leading-relaxed text-ink-soft">{c.summary}</p>
+              <div className="border-t border-dashed border-line pt-4 font-mono text-xs uppercase text-ink">{c.client}</div>
             </motion.div>
           ))}
         </motion.div>

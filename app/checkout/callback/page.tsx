@@ -55,7 +55,7 @@ export default function CheckoutCallbackPage() {
         )}
         {status === "success" && (
           <>
-            <h1 className="mb-3 font-serif text-2xl font-medium">You're all set.</h1>
+            <h1 className="mb-3 font-serif text-2xl font-medium">You're in.</h1>
             <p className="mb-1 font-mono text-sm leading-relaxed text-ink-soft">
               Payment confirmed and your slot is locked in. Check your email
               for the calendar invite and receipt.
@@ -69,7 +69,7 @@ export default function CheckoutCallbackPage() {
           <>
             <h1 className="mb-3 font-serif text-2xl font-medium">Almost there.</h1>
             <p className="font-mono text-sm leading-relaxed text-ink-soft">
-              We're still confirming your payment — this can take a minute.
+              We're still setting up your account — this can take a minute.
               Refresh this page shortly, or check your email for confirmation.
             </p>
           </>
@@ -78,7 +78,7 @@ export default function CheckoutCallbackPage() {
           <>
             <h1 className="mb-3 font-serif text-2xl font-medium">Something went wrong.</h1>
             <p className="font-mono text-sm leading-relaxed text-ink-soft">
-              We couldn't find that payment reference. If you were charged,
+              We couldn't find that payment reference. If your card was charged,
               contact us and we'll sort it out.
             </p>
           </>

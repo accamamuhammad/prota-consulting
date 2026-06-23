@@ -9,7 +9,7 @@ export default function CheckoutPage() {
     const bookingId = new URLSearchParams(window.location.search).get("bookingId");
 
     if (!bookingId) {
-      queueMicrotask(() => setError("Missing booking reference. Please book a slot first."));
+      queueMicrotask(() => setError("Missing booking reference. Please book a demo first."));
       return;
     }
 
@@ -50,7 +50,7 @@ export default function CheckoutPage() {
         ) : (
           <>
             <h1 className="mb-3 font-serif text-2xl font-medium">
-              Taking you to payment…
+              Setting up your trial…
             </h1>
             <p className="font-mono text-sm text-ink-soft">
               Hang tight, this only takes a second.

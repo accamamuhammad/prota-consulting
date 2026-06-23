@@ -11,15 +11,16 @@ export default function AboutPage() {
       <Nav />
       <PageHeader
         eyebrow="About"
-        title="The story behind the strategy."
-        description="Prota Consulting exists because too much strategy work never gets executed. Here's the story behind why we work differently."
+        title="The story behind Loopline."
+        description="We built Loopline after watching the same churn story play out across teams that had the data the whole time — it just wasn't anywhere they could see it."
       />
       <About />
       <Values />
       <Timeline />
       <CTABanner
-        title="Curious if we're the right fit?"
-        description="A 30-minute call is the fastest way to find out."
+        title="Curious if Loopline fits your stack?"
+        description="A 15-minute demo is the fastest way to find out."
+        buttonLabel="Book a demo →"
       />
     </main>
   );

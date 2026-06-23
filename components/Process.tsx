@@ -3,26 +3,10 @@
 import { motion } from "motion/react";
 
 const STEPS = [
-  {
-    step: "01",
-    title: "Discovery call",
-    description: "A free 30-minute call to understand what's going on and whether we're a fit.",
-  },
-  {
-    step: "02",
-    title: "Diagnostic",
-    description: "We dig into your numbers, process, and team to find the real bottleneck — not just the obvious one.",
-  },
-  {
-    step: "03",
-    title: "Plan & execution",
-    description: "A working plan with owners and milestones, then hands-on support actually shipping it.",
-  },
-  {
-    step: "04",
-    title: "Handoff",
-    description: "Documentation and a final review so your team can run it without us once we're done.",
-  },
+  { step: "01", title: "Connect your data", description: "Link Stripe and your product analytics — takes about 10 minutes, no engineering ticket required." },
+  { step: "02", title: "Loopline scores your accounts", description: "Every account gets a live risk score based on usage, billing, and support signals." },
+  { step: "03", title: "Get alerted on risk", description: "Drops in usage or failed payments trigger a Slack alert before renewal, not after." },
+  { step: "04", title: "Track the trend", description: "Cohort and NRR dashboards show whether retention is actually improving over time." },
 ];
 
 const fadeUp = {
@@ -47,7 +31,7 @@ export default function Process() {
             How it works
           </div>
           <h2 className="max-w-[640px] font-serif text-[34px] font-medium leading-[1.15] sm:text-[42px]">
-            Four steps, start to finish.
+            Live in an afternoon, not a quarter.
           </h2>
         </motion.div>
 

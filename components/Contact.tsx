@@ -73,8 +73,8 @@ export default function Contact() {
             </p>
 
             <div className="mt-10 space-y-3 font-mono text-sm text-ink-soft">
-              <div>hello@protaconsulting.com</div>
-              <div>Abuja, Nigeria · Remote-friendly</div>
+              <div>hello@loopline.app</div>
+              <div>Remote team · Global customers</div>
             </div>
           </motion.div>
 

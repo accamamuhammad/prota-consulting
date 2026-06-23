@@ -6,24 +6,20 @@ import CTABanner from "@/components/CTABanner";
 
 const FAQ_ITEMS = [
   {
-    question: "What's included in the Growth Sprint?",
-    answer:
-      "Weekly working sessions, a full written strategy document, direct Slack/email access during the engagement, and check-ins on implementation — not just planning.",
+    question: "Can I switch plans later?",
+    answer: "Yes, upgrade or downgrade anytime from your billing settings — changes are prorated automatically.",
   },
   {
-    question: "Can I upgrade from Intro Session to a Sprint later?",
-    answer:
-      "Yes — the Intro Session fee is credited toward a Growth Sprint if you book one within 30 days.",
+    question: "What happens if I go over my account limit?",
+    answer: "We'll give you a heads-up before you hit the cap, with the option to upgrade — we never cut off access mid-billing-cycle without warning.",
   },
   {
-    question: "Do you offer payment plans?",
-    answer:
-      "For the Retainer tier, yes. Growth Sprints and Intro Sessions are paid upfront to secure the slot.",
+    question: "Do you offer discounts for startups?",
+    answer: "Yes, reach out and we'll talk through a startup plan if you're pre-Series A.",
   },
   {
-    question: "What currency are prices in?",
-    answer:
-      "Pricing is processed in Naira (NGN) via Paystack. International clients can pay with major cards through the same checkout.",
+    question: "Is there a setup fee?",
+    answer: "No setup fees on any plan, including Enterprise.",
   },
 ];
 
@@ -33,15 +29,12 @@ export default function PricingPage() {
       <Nav />
       <PageHeader
         eyebrow="Pricing"
-        title="Simple, transparent pricing."
-        description="From a single working session to ongoing advisory — transparent pricing, no surprise scope creep."
+        title="Pricing that scales with your account base."
+        description="Pay for what you track, not for seats you don't use. No setup fees, cancel anytime."
       />
       <Pricing />
-      <FAQ eyebrow="Pricing FAQ" title="Questions about cost and scope." items={FAQ_ITEMS} />
-      <CTABanner
-        title="Not sure which tier fits?"
-        description="Book a free intro call and we'll help you figure out the right starting point."
-      />
+      <FAQ eyebrow="Pricing FAQ" title="Questions about plans and billing." items={FAQ_ITEMS} />
+      <CTABanner title="Not sure which plan fits?" description="Book a demo and we'll help you figure out the right starting point." />
     </main>
   );
 }
