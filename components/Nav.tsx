@@ -9,6 +9,7 @@ const LINKS = [
   { label: "Pricing", href: "/pricing" },
   { label: "Customers", href: "/customers" },
   { label: "About", href: "/about" },
+  { label: "Live Demo", href: "/dashboard" },
 ];
 
 export default function Nav() {
@@ -16,15 +17,15 @@ export default function Nav() {
 
   return (
     <nav className="border-b border-line bg-bg">
-      <div className="mx-auto flex max-w-[1250px] items-center justify-between px-3 py-4 sm:px-4">
-        <Link href="/" className="flex items-center pr-40 gap-2 text-[13px] font-semibold uppercase">
+      <div className="mx-auto grid grid-cols-[1fr_auto_1fr] items-center max-w-[1180px] px-3 py-4 sm:px-4">
+        <Link href="/" className="flex items-center gap-2 text-[13px] font-semibold uppercase">
           <span className="relative inline-block h-[15px] w-[15px] rounded-sharp bg-ink">
             <span className="absolute inset-[4px] bg-indigo" />
           </span>
           Loopline
         </Link>
 
-        <div className="hidden items-center gap-7 font-mono text-[12px] uppercase md:flex">
+        <div className="hidden items-center gap-7 font-mono text-[11px] uppercase md:flex">
           {LINKS.map((l) => (
             <Link key={l.href} href={l.href} className="text-ink opacity-75 transition-opacity hover:opacity-100">
               {l.label}
@@ -32,7 +33,7 @@ export default function Nav() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-2.5 md:flex">
+        <div className="hidden items-center justify-end gap-2.5 md:flex">
           <Link href="/booking" className="rounded-sharp border border-ink px-4 py-2 font-mono text-[11px] uppercase tracking-wide text-ink">
             Book a demo
           </Link>
@@ -50,7 +51,7 @@ export default function Nav() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="col-start-3 flex h-9 w-9 flex-col items-center justify-center justify-self-end gap-1.5 md:hidden"
         >
           <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 5 : 0 }} className="block h-[1.5px] w-5 bg-ink" />
           <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -5 : 0 }} className="block h-[1.5px] w-5 bg-ink" />

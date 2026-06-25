@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseServerClient } from "@/lib/supabase-server";
 
-// The price for an intro consultation, in Naira. Paystack expects amounts
-// in kobo (smallest unit), so we multiply by 100 when calling their API.
-// TODO: once you have multiple service tiers, look this up based on a
-// service/tier id passed in from the booking flow instead of hardcoding it.
-const INTRO_CONSULTATION_PRICE_NGN = 25000;
+// Starter plan price, in USD — matches the price shown on /pricing.
+// Paystack expects amounts in the smallest currency unit (cents for USD),
+// so we multiply by 100. Note: charging in USD requires your Paystack
+// account to be enabled for USD settlement — if it isn't, switch currency
+// to "NGN" and convert this to Naira at your current rate instead.
+// TODO: once checkout supports multiple plans, accept a `plan` field in
+// the request body and look up the right price instead of hardcoding Starter.
+const STARTER_PLAN_PRICE_USD = 49;
 
 export async function POST(req: NextRequest) {
   const { bookingId } = await req.json();
@@ -27,7 +30,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Booking not found" }, { status: 404 });
   }
 
-  const amountInKobo = INTRO_CONSULTATION_PRICE_NGN * 100;
+  const amountInCents = STARTER_PLAN_PRICE_USD * 100;
 
   const paystackRes = await fetch("https://api.paystack.co/transaction/initialize", {
     method: "POST",
@@ -37,8 +40,8 @@ export async function POST(req: NextRequest) {
     },
     body: JSON.stringify({
       email: booking.email,
-      amount: amountInKobo,
-      currency: "NGN",
+      amount: amountInCents,
+      currency: "USD",
       callback_url: `${process.env.NEXT_PUBLIC_SITE_URL}/checkout/callback`,
       metadata: {
         booking_id: booking.id,
@@ -62,8 +65,8 @@ export async function POST(req: NextRequest) {
     .from("bookings")
     .update({
       payment_reference: paystackData.data.reference,
-      amount: amountInKobo,
-      currency: "NGN",
+      amount: amountInCents,
+      currency: "USD",
     })
     .eq("id", bookingId);
 

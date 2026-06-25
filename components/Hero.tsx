@@ -133,11 +133,24 @@ export default function Hero() {
             </Link>
           </motion.div>
         </motion.div>
+
+        <motion.div variants={fadeUp} transition={{ duration: 0.5, ease: "easeOut" }} className="mb-12 text-center">
+          <Link href="/dashboard" className="font-mono text-[12.5px] uppercase text-ink-soft underline-offset-4 hover:text-indigo hover:underline">
+            Or explore a live dashboard, no signup needed →
+          </Link>
+        </motion.div>
       </motion.div>
 
-      <div className="mx-2 px-2">
-        <DashboardPreview />
-      </div>
+      <Link href="/dashboard" className="group mx-2 block px-2">
+        <div className="relative">
+          <DashboardPreview />
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-t-2xl bg-ink/0 transition-colors group-hover:bg-ink/5">
+            <span className="rounded-sharp bg-ink px-5 py-3 font-mono text-[12px] uppercase tracking-wide text-bg opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+              See it in action →
+            </span>
+          </div>
+        </div>
+      </Link>
     </section>
   );
 }
